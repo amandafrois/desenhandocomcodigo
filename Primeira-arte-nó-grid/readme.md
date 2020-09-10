@@ -1,4 +1,4 @@
-#Padrão geométrico com primitivas básicas e nó grid
+# Padrão geométrico com primitivas básicas e nó grid
 
 O exercício que realizei foi o seguinte:
 
