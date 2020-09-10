@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="c7f11bc6-ad3d-4d78-adfc-e251e0b78633">
+    <property name="canvasHeight" value="1080"/>
+    <property name="canvasWidth" value="1350"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine2">
+        <node name="colorize1" position="-2.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#f8f9e0ff"/>
+        </node>
+        <node name="colorize21" position="4.00,2.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#4e00abff"/>
+            <port name="stroke" type="color" value="#00c00000"/>
+            <port name="strokeWidth" type="float" value="7.0"/>
+        </node>
+        <node name="combine1" position="-1.00,2.00" prototype="list.combine"/>
+        <node name="combine2" position="3.00,6.00" prototype="list.combine"/>
+        <node name="copy3" position="4.00,4.00" prototype="corevector.copy">
+            <port name="copies" type="int" value="15"/>
+            <port name="order" type="string" value="rtr"/>
+            <port name="rotate" type="float" value="12.0"/>
+            <port name="scale" type="point" value="0.00,0.00"/>
+        </node>
+        <node name="rect1" position="-2.00,5.00" prototype="corevector.rect">
+            <port name="width" type="float" value="1350.0"/>
+            <port name="height" type="float" value="1080.0"/>
+        </node>
+        <node name="rect13" position="4.00,0.00" prototype="corevector.rect">
+            <port name="width" type="float" value="150.0"/>
+            <port name="height" type="float" value="150.0"/>
+            <port name="roundness" type="point" value="5.00,5.00"/>
+        </node>
+        <node name="rgb_color11" position="-1.00,-1.00" prototype="color.rgb_color">
+            <port name="red" type="float" value="544.0"/>
+            <port name="green" type="float" value="-194.0"/>
+            <port name="blue" type="float" value="100.0"/>
+            <port name="alpha" type="float" value="336.0"/>
+            <port name="range" type="float" value="194.0"/>
+        </node>
+        <node name="rgb_color12" position="-1.00,0.00" prototype="color.rgb_color">
+            <port name="red" type="float" value="255.0"/>
+            <port name="green" type="float" value="663.0"/>
+            <port name="blue" type="float" value="-141.0"/>
+            <port name="alpha" type="float" value="502.0"/>
+            <port name="range" type="float" value="146.0"/>
+        </node>
+        <node name="rgb_color13" position="-1.00,1.00" prototype="color.rgb_color">
+            <port name="red" type="float" value="-327.0"/>
+            <port name="green" type="float" value="255.0"/>
+            <port name="blue" type="float" value="393.0"/>
+            <port name="alpha" type="float" value="717.0"/>
+            <port name="range" type="float" value="128.0"/>
+        </node>
+        <node name="rotate5" position="4.00,1.00" prototype="corevector.rotate"/>
+        <node name="sample11" position="2.00,-2.00" prototype="math.sample">
+            <port name="amount" type="int" value="15"/>
+            <port name="start" type="float" value="70.0"/>
+            <port name="end" type="float" value="700.0"/>
+        </node>
+        <node name="sample2" position="5.00,-2.00" prototype="math.sample">
+            <port name="amount" type="int" value="60"/>
+            <port name="start" type="float" value="20.0"/>
+            <port name="end" type="float" value="300.0"/>
+        </node>
+        <node name="sample3" position="-1.00,-3.00" prototype="math.sample">
+            <port name="amount" type="int" value="3"/>
+            <port name="start" type="float" value="80.0"/>
+            <port name="end" type="float" value="120.0"/>
+        </node>
+        <node name="translate8" position="4.00,3.00" prototype="corevector.translate"/>
+        <conn input="translate8.shape" output="colorize21"/>
+        <conn input="copy3.shape" output="translate8"/>
+        <conn input="rotate5.shape" output="rect13"/>
+        <conn input="colorize21.shape" output="rotate5"/>
+        <conn input="rotate5.angle" output="sample11"/>
+        <conn input="rect13.position" output="sample2"/>
+        <conn input="rgb_color13.green" output="sample3"/>
+        <conn input="rgb_color12.red" output="sample3"/>
+        <conn input="rgb_color11.blue" output="sample3"/>
+        <conn input="combine1.list3" output="rgb_color11"/>
+        <conn input="combine1.list1" output="rgb_color13"/>
+        <conn input="combine1.list2" output="rgb_color12"/>
+        <conn input="colorize21.fill" output="combine1"/>
+        <conn input="combine2.list2" output="copy3"/>
+        <conn input="colorize1.shape" output="rect1"/>
+        <conn input="combine2.list1" output="colorize1"/>
+    </node>
+</ndbx>
